@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        width: 100%;
+        height: 600px;
+      }
+      body {
+      text-align:center;
+    	font-family: Verdana, Geneva, sans-serif;
+    	background: white;
+      }
+    </style>
+    
+    <title>Google Maps</title>
+  </head>
+  
+  <body>
+    <h3>MY MAPS</h3>
+    <div id="map"></div>
+
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+            center: {lat: 37.300258, lng: -122.0035},
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.HYBRID,
+        });
+        
+        
+        var contentHome = '<div id="content">'+'<div id="siteNotice">'+'</div>'+'<h1 id="firstHeading" class="firstHeading">My house</h1>'+
+      					'<div id="bodyContent">'+'<p>I like my house because I can sleep there.</p>'+'</div>'+'</div>';
+
+  		var infohome = new google.maps.InfoWindow({
+    		content: contentHome
+ 		});
+
+        var home = new google.maps.Marker({
+   		position: {lat: 37.296598340287346, lng: -122.01531928963959},
+   		animation: google.maps.Animation.DROP,
+    	map: map,
+    	title: 'Home'
+    	});
+    	
+    	home.addListener('click', function() {
+    	infohome.open(map, home);
+  		});
+  
+  		var contentSchool = '<div id="content">'+'<div id="siteNotice">'+'</div>'+'<h1 id="firstHeading" class="firstHeading">School</h1>'+
+      					'<div id="bodyContent">'+'<p>I do not like my school.</p>'+'</div>'+'</div>';
+
+  		var infoschool = new google.maps.InfoWindow({
+    		content: contentSchool
+ 		});
+
+        var school = new google.maps.Marker({
+   		position: {lat: 37.30115447355999, lng: -122.00481307692826},
+   		animation: google.maps.Animation.DROP,
+    	map: map,
+    	title: 'School'
+    	});
+    	
+    	school.addListener('click', function() {
+    	infoschool.open(map, school);
+  		});
+  		
+  		var contentPizza = '<div id="content">'+'<div id="siteNotice">'+'</div>'+'<h1 id="firstHeading" class="firstHeading">Cicero Pizza</h1>'+
+      					'<div id="bodyContent">'+'<p>I like pizza.</p>'+'</div>'+'</div>';
+
+  		var infopizza = new google.maps.InfoWindow({
+    		content: contentPizza
+ 		});
+		
+        var pizza = new google.maps.Marker({
+   		position: {lat: 37.309384, lng: -122.012356},
+   		animation: google.maps.Animation.DROP,
+    	map: map,
+    	title: 'Pizza'
+    	});
+    	
+    	pizza.addListener('click', function() {
+    	infopizza.open(map, pizza);
+  		});
+  		
+  		
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7o1rTNcw0sjT6SspMiEMHsDxCf2lwT7c&callback=initMap">
+    </script>
+  </body>
+</html>
